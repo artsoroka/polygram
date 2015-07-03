@@ -7,6 +7,7 @@ var config	     = require('./config');
 
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(cookieParser()); 
+app.use(session(config.session))
 
 app.use(express.static(__dirname + '/public')); 
 app.set('view engine', 'ejs'); 
