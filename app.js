@@ -4,6 +4,7 @@ var bodyParser 	 = require('body-parser');
 var cookieParser = require('cookie-parser');  
 var app        	 = express(); 
 var config	     = require('./config'); 
+var log			 = require('./lib/logger'); 
 
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(cookieParser()); 
@@ -40,5 +41,5 @@ app.get('/mainpage', authRequired, function(req,res){
 }); 
 
 var server = app.listen(config.app.port, function(){
-    console.log('Polygram is started on a port %d', server.address().port); 
+    log.info('Polygram is started on a port %d', server.address().port); 
 }); 
