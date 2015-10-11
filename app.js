@@ -39,6 +39,6 @@ app.get('/mainpage', authRequired, function(req,res){
 	res.send('mainpage'); 
 }); 
 
-app.listen(config.app.port, function(){
-    console.log('Photorama is started on a port %d', config.app.port); 
+var server = app.listen(config.app.port, function(){
+    console.log('Polygram is started on a port %d', server.address().port); 
 }); 
