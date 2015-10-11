@@ -24,7 +24,10 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
         <h1>Hello Polyram</h1>
-        <a class="btn btn-block btn-social btn-lg btn-instagram"><i class="fa fa-instagram"></i>Sign in with Instagram</a>
+        <% if(locals.user) { %>
+            <%= locals.user.instagram.username %>
+            <img src="<%= locals.user.instagram.profile_picture %>">
+        <% }%>
       </div>
       <div class="col-md-4"></div>
     </div>

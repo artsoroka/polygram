@@ -20,5 +20,9 @@ module.exports = {
             host: process.env.PAPERTRAIL_HOST, 
             port: process.env.PAPERTRAIL_PORT 
         }
+    }, 
+    instagram: {
+        client_id: process.env.CLIENT_ID, 
+        client_secret: process.env.CLIENT_SECRET
     }
 }; 
