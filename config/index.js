@@ -1,3 +1,7 @@
+require('dotenv').load({
+    path: __dirname + '/../.env'
+}); 
+
 module.exports = {
 	app: {
 		port: process.env.POLYGRAM_PORT || 8080
@@ -10,5 +14,11 @@ module.exports = {
             secure: false
         },
         secret: 'keyboard cat'
+    },
+    logger: {
+        papertrail: {
+            host: process.env.PAPERTRAIL_HOST, 
+            port: process.env.PAPERTRAIL_PORT 
+        }
     }
 }; 
