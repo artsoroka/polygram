@@ -6,6 +6,13 @@ module.exports = {
 	app: {
 		port: process.env.POLYGRAM_PORT || 8080
 	},
+	db: {
+    	host     : process.env.POLYGRAM_DB_HOST, 
+        port     : process.env.POLYGRAM_DB_PORT, 
+        user     : process.env.POLYGRAM_DB_USER, 
+        password : process.env.POLYGRAM_DB_PSWD,  
+        database : process.env.POLYGRAM_DB_NAME
+	}, 
 	session: {
         name: 'polygram', 
         key:  'polygram', 

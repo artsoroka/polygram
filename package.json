@@ -28,7 +28,7 @@
     "ejs": "~2.3.2",
     "express": "~4.13.0",
     "express-session": "~1.11.3",
-    "mysql": "~2.7.0",
+    "mysql": "^2.7.0",
     "request": "^2.58.0",
     "winston": "^1.1.0",
     "winston-papertrail": "^1.0.1"
