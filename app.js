@@ -9,7 +9,7 @@ var routes 		 = require('./routes');
 
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(cookieParser()); 
-app.use(session(config.session))
+app.use(session(config.session)); 
 
 app.use(express.static(__dirname + '/public')); 
 app.set('view engine', 'ejs'); 
@@ -19,4 +19,4 @@ app.use(routes);
 
 var server = app.listen(config.app.port, function(){
     log.info('Polygram is started on a port %d', server.address().port); 
-}); 
+});
