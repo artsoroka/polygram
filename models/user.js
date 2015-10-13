@@ -22,19 +22,7 @@ var createUser = function(data){
     }); 
 };
 
-
-/*
-    instagram response object 
-    -access_token 
-    -user 
-    --id
-    --full_name
-    --profile_picture
-    --website
-    --bio
-    --username
-*/
-User.prototype.login = function(response){
+var authenticate =  function(response){
     return new Promise(function(resolve, reject){
         db.query('SELECT * FROM users WHERE instagram_id = ?', response.user.id, function(err, data){
             if( err ) return reject(err); 
@@ -64,6 +52,46 @@ User.prototype.login = function(response){
         }); 
     }); 
 }; 
+
+var saveAccessToken = function(user){
+    return new Promise(function(resolve, reject){
+        log.info('saving access token for user ', user.instagram.username); 
+        db.query('INSERT INTO user_tokens SET ?', {
+            user_id: user.id, 
+            access_token: user.accessToken
+        }, function(err, result){
+            if( err ){
+                log.error('could not save access token for user ', user.instagram.username); 
+                return reject(err);
+            } 
+            resolve(user); 
+        }); 
+    }); 
+}; 
+
+/*
+    instagram response object 
+    -access_token 
+    -user 
+    --id
+    --full_name
+    --profile_picture
+    --website
+    --bio
+    --username
+*/
+User.prototype.login = function(response){
+    return new Promise(function(resolve, reject){
+        authenticate(response)
+            .then(saveAccessToken)
+            .then(function(user){
+                resolve(user); 
+            })
+            .catch(function(err){
+                reject(err); 
+            }); 
+    })
+}
 
 
 module.exports = new User(); 
